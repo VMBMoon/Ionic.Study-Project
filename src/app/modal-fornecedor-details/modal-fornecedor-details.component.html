@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Fornecedor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-item-group>
+    <ion-item-divider>
+      <ion-label>Mais Detalhes</ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-note slot="start">ID</ion-note>
+      <ion-label>{{ fornecedor.id }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Razão Social</ion-note>
+      <ion-label>{{ fornecedor.razao_social }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">CNPJ</ion-note>
+      <ion-label>{{ fornecedor.cnpj }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-note slot="start">Endereço</ion-note>
+      <ion-label>{{ fornecedor.endereco }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note slot="start">Contato</ion-note>
+      <ion-label>{{ fornecedor.contato }}</ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-row class="ion-justify-content-between">
+
+      <ion-button class="edit" shape="round" color="tertiary" (click)="edit(fornecedor.id)">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button class="delete" shape="round" color="danger" (click)="delete(fornecedor.id)">
+      <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,37 @@
+{
+  "Produto": [
+    {
+      "id": 1,
+      "nome": "Nike Air",
+      "quantidade": 100,
+      "preco_compra": 100,
+      "preco_venda": 112,
+      "fornecedor": "Nike"
+    },
+    {
+      "nome": "Soccer Ball",
+      "quantidade": 90,
+      "preco_compra": 40,
+      "preco_venda": 52,
+      "fornecedor": "Adidas",
+      "id": 2
+    },
+    {
+      "nome": "Camisa Seleção Portuguesa Christiano Ronaldo",
+      "quantidade": 27,
+      "preco_compra": 150,
+      "preco_venda": 400,
+      "fornecedor": "Nike",
+      "id": 3
+    }
+  ],
+  "Fornecedor": [
+    {
+      "id": 1,
+      "razao_social": "NIKE DO BRASIL COMERCIO E PARTICIPACOES LTDA",
+      "cnpj": 59546515000134,
+      "endereco": "05.069-010",
+      "contato": "bra.saopaulo.fiscal@nike.com"
+    }
+  ]
+}

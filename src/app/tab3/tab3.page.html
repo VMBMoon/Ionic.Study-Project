@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+    <ion-title> Cadastro </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Cadastro de Fornecedor</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-content>
+    <form [formGroup]="fornecedorForm" fullscreen (submit)="addFornecedor()">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Fornecedor</ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-label position="stacked">Razão Social</ion-label>
+            <ion-input formControlName="razao_social" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">CNPJ</ion-label>
+            <ion-input formControlName="cnpj" type="number" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Endereço</ion-label>
+            <ion-input formControlName="endereco" type="text" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Contato</ion-label>
+            <ion-input formControlName="contato" type="text" required></ion-input>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+      <div class="ion-padding">
+        <ion-button [disabled]="fornecedorForm.invalid" expand="block" type="submit" class="ion-no-margin">Registrar</ion-button>
+      </div>
+    </form>
+  </ion-content>
 </ion-content>

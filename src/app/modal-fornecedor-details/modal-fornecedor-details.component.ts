@@ -1,3 +1,4 @@
+import { Endereco } from './../model/endereco';
 import { Fornecedor } from './../model/fornecedor';
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
@@ -12,6 +13,7 @@ import { FornecedorService } from '../services/fornecedor.service';
 export class ModalFornecedorDetailsComponent implements OnInit {
 
   @Input() fornecedor!: Fornecedor;
+  @Input() endereco!: Endereco;
 
 
   constructor(
@@ -27,7 +29,7 @@ export class ModalFornecedorDetailsComponent implements OnInit {
   ngOnInit() {}
 
   edit(id: number) {
-    this.router.navigate(['/tabs/editar', id]);
+    this.router.navigate(['/tabs/editar_forn', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 

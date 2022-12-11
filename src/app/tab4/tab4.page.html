@@ -27,10 +27,10 @@
         <ion-col sizeXs="2">{{ fornecedores.id }}</ion-col>
         <ion-col sizeXs="7">{{ fornecedores.razao_social }}</ion-col>
         <ion-col class="hidden-xs-col">{{ fornecedores.cnpj}}</ion-col>
-        <ion-col class="hidden-xs-col">{{ fornecedores.endereco }}</ion-col>
         <ion-col class="hidden-xs-col">{{ fornecedores.contato }}</ion-col>
-        <ion-col sizeXs="3" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="openModal(fornecedores.id)"><ion-icon name="ellipsis-horizontal-sharp"></ion-icon></ion-button></ion-col>
-      </ion-row>
+        <ion-col class="hidden-xs-col">{{ fornecedores.endereco }}</ion-col>
+      <ion-col sizeXs="3" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="openModal(fornecedores.id)"><ion-icon name="ellipsis-horizontal-sharp"></ion-icon></ion-button></ion-col>
+    </ion-row>
     </ion-grid>
     <div class="ion-modal-content"></div>
   </ion-content>

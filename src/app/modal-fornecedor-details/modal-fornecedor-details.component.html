@@ -23,13 +23,25 @@
       <ion-note slot="start">CNPJ</ion-note>
       <ion-label>{{ fornecedor.cnpj }}</ion-label>
     </ion-item>
+    <ion-item>
+      <ion-note slot="start">Contato</ion-note>
+      <ion-label>{{ fornecedor.contato }}</ion-label>
+    </ion-item>
     <ion-item lines="none">
       <ion-note slot="start">Endereço</ion-note>
       <ion-label>{{ fornecedor.endereco }}</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-note slot="start">Contato</ion-note>
-      <ion-label>{{ fornecedor.contato }}</ion-label>
+    <ion-item lines="none">
+      <ion-note slot="start">Logradouro</ion-note>
+      <ion-label>{{ endereco.logradouro }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-note slot="start">Bairro</ion-note>
+      <ion-label>{{ endereco.bairro }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-note slot="start">Localidade</ion-note>
+      <ion-label>{{ endereco.localidade }}</ion-label>
     </ion-item>
   </ion-item-group>
   <ion-row class="ion-justify-content-between">

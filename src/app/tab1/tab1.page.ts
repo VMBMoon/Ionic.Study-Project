@@ -29,7 +29,8 @@ export class Tab1Page implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       quantidade: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(5), Validators.pattern(/^[0-9]+$/)] ],
       preco_compra: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
-      preco_venda: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
+      porcentagem: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
+      preco_venda: ['', []],
       fornecedor: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]]
     });
 
@@ -49,11 +50,9 @@ export class Tab1Page implements OnInit {
     });
 }
 
-
-
-
   addProduct() {
     const newProduct = this.productForm.getRawValue() as Product;
+
 
 
     this.productService.insertProduct(newProduct)
@@ -72,9 +71,38 @@ export class Tab1Page implements OnInit {
       nome: this.product.nome,
       quantidade: this.product.quantidade,
       preco_compra: this.product.preco_compra,
+      porcentagem: this.product.porcentagem,
       preco_venda: this.product.preco_venda,
       fornecedor: this.product.fornecedor
     });
+  }
+
+  editProduct() {
+    const editProduct = this.productForm.getRawValue() as Product;
+    editProduct.id = this.product.id;
+
+    this.productService.updateProduct(editProduct).subscribe({
+      next: () => {
+        this.router.navigateByUrl('/tabs/tab2');
+        this.productForm.reset();
+      },
+      error: (err) => {
+        console.error(err);
+        this.productForm.reset();
+      }
+    });
+  }
+
+  calcVenda() {
+    let valorCompra = this.productForm.get('preco_compra')?.value;
+    let porcentagem = this.productForm.get('porcentagem')?.value;
+
+    let calcVenda = valorCompra + (valorCompra * (porcentagem / 100));
+
+    this.productForm.patchValue({
+      preco_venda : calcVenda
+    })
+
   }
 
 }

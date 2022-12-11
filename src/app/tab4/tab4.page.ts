@@ -1,3 +1,4 @@
+import { Endereco } from './../model/endereco';
 import { FornecedorService } from './../services/fornecedor.service';
 import { Fornecedor } from './../model/fornecedor';
 import { Component } from '@angular/core';
@@ -12,6 +13,7 @@ import { ModalFornecedorDetailsComponent } from '../modal-fornecedor-details/mod
 export class Tab4Page {
 
   fornecedor!: Fornecedor[];
+  endereco!: Endereco[];
 
 
   constructor(
@@ -33,12 +35,14 @@ export class Tab4Page {
   async openModal(id:number) {
 
     const fornecedor = this.fornecedor.find(fornecedor => fornecedor.id === id);
+    const endereco = this.fornecedor.find(fornecedor => fornecedor.id === id);
 
 
     const modal = await this.modalCtrl.create({
       component: ModalFornecedorDetailsComponent,
       componentProps: {
-        'fornecedor': fornecedor
+        'fornecedor': fornecedor,
+        'endereco' : endereco,
       }
     });
 

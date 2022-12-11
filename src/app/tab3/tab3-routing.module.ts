@@ -1,3 +1,4 @@
+import { CorreiosService } from './../services/correios.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Tab3Page } from './tab3.page';
@@ -11,6 +12,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CorreiosService]
 })
 export class Tab3PageRoutingModule {}

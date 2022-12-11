@@ -27,7 +27,7 @@ export class ModalProductDetailsComponent implements OnInit {
   ngOnInit() {}
 
   edit(id: number) {
-    this.router.navigate(['/tabs/editar', id]);
+    this.router.navigate(['/tabs/editar_prod', id]);
     this.modalCtrl.dismiss(null, 'cancel');
   }
 

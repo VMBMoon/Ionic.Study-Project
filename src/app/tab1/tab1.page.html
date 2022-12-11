@@ -1,17 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Cadastro </ion-title>
+    <ion-title>{{ editable ? 'Editar' : 'Cadastrar'}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Cadastro de Produto</ion-title>
+      <ion-title size="large">{{ editable ? 'Editar Produto' : 'Cadastro de Produto'}}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <form [formGroup]="productForm" fullscreen (submit)="addProduct()">
+    <form [formGroup]="productForm" fullscreen (submit)="editable ? editProduct(): addProduct() ">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-group>
           <ion-item-divider>
@@ -30,9 +29,10 @@
             <ion-input formControlName="preco_compra" type="number" required></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="stacked">Preço de Venda</ion-label>
-            <ion-input formControlName="preco_venda" type="number" required></ion-input>
+            <ion-label position="stacked">Porcentagem de Venda</ion-label>
+            <ion-input formControlName="porcentagem" type="number" required></ion-input>
           </ion-item>
+            <ion-input formControlName="preco_venda" [value]="calcVenda()" hidden></ion-input>
           <ion-item>
             <ion-label position="stacked">Fornecedor</ion-label>
             <ion-input formControlName="fornecedor" type="text" required></ion-input>
@@ -40,7 +40,8 @@
         </ion-item-group>
       </ion-list>
       <div class="ion-padding">
-        <ion-button [disabled]="productForm.invalid" expand="block" type="submit" class="ion-no-margin">Registrar</ion-button>
+        <ion-button [disabled]="productForm.invalid" expand="block" type="submit" class="ion-no-margin">{{ editable ?
+          'Editar' : 'Registrar'}}</ion-button>
       </div>
     </form>
   </ion-content>

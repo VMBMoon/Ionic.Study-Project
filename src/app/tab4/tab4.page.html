@@ -15,7 +15,6 @@
   <ion-content>
     <ion-grid class="ion-grid-padding">
       <ion-row>
-        <ion-col sizeXs="2">#</ion-col>
         <ion-col sizeXs="7">Nome</ion-col>
         <ion-col class="hidden-xs-col">Quantidade</ion-col>
         <ion-col class="hidden-xs-col">Preço de Venda</ion-col>
@@ -24,7 +23,6 @@
         <ion-col sizeXs="3" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">Detalhes</ion-col>
       </ion-row>
       <ion-row *ngFor="let fornecedores of fornecedor">
-        <ion-col sizeXs="2">{{ fornecedores.id }}</ion-col>
         <ion-col sizeXs="7">{{ fornecedores.razao_social }}</ion-col>
         <ion-col class="hidden-xs-col">{{ fornecedores.cnpj}}</ion-col>
         <ion-col class="hidden-xs-col">{{ fornecedores.contato }}</ion-col>

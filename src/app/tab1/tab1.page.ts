@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from './../services/firebase.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Product } from './../model/product';
@@ -16,23 +17,37 @@ export class Tab1Page implements OnInit {
   product!:Product;
   editable:boolean = false;
 
+
+  @ViewChild('createProductForm') createProductForm!: FormGroupDirective;
+
+
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
+    private firebaseService: FirebaseService,
     private router: Router,
     private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
 
-    this.productForm = this.formBuilder.group({
+    this.productForm = new FormGroup({
+      'nome': new FormControl('', Validators.required),
+      'quantidade': new FormControl('', Validators.required),
+      'preco_compra': new FormControl('', Validators.required),
+      'porcentagem': new FormControl('', Validators.required),
+      'preco_venda': new FormControl('', Validators.required),
+      'fornecedor': new FormControl('', Validators.required)
+    });
+
+    /*this.productForm = this.formBuilder.group({
       nome: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       quantidade: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(5), Validators.pattern(/^[0-9]+$/)] ],
       preco_compra: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
       porcentagem: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
       preco_venda: ['', []],
       fornecedor: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]]
-    });
+    });*/
 
     this.route.paramMap.subscribe(params => {
       const productId = +params.get('id')!;
@@ -50,8 +65,13 @@ export class Tab1Page implements OnInit {
     });
 }
 
-  addProduct() {
-    const newProduct = this.productForm.getRawValue() as Product;
+  addProduct(values: any) {
+    let newProduct:Product = {...values};
+    this.firebaseService.save(newProduct);
+    console.log(newProduct);
+    this.productForm.reset();
+
+    /*const newProduct = this.productForm.getRawValue() as Product;
 
 
 
@@ -63,7 +83,7 @@ export class Tab1Page implements OnInit {
         this.router.navigateByUrl('/tabs/tab2');
       },
       error: (error:any) => { console.log(error) }
-    });
+    });*/
   }
 
   loadForm() {

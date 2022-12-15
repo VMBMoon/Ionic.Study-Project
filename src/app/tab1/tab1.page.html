@@ -10,7 +10,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <form [formGroup]="productForm" fullscreen (submit)="editable ? editProduct(): addProduct() ">
+    <form [formGroup]="productForm" #ProductForm="ngForm" fullscreen (submit)="editable ? editProduct(): addProduct(ProductForm.value)">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item-group>
           <ion-item-divider>

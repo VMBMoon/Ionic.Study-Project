@@ -15,22 +15,24 @@
   <ion-content>
     <ion-grid class="ion-grid-padding">
       <ion-row>
-        <ion-col sizeXs="2">#</ion-col>
         <ion-col sizeXs="7">Nome</ion-col>
         <ion-col class="hidden-xs-col">Quantidade</ion-col>
         <ion-col class="hidden-xs-col">Preço de Venda</ion-col>
         <ion-col class="hidden-xs-col">Preço de Compra</ion-col>
         <ion-col class="hidden-xs-col">Fornecedor</ion-col>
-        <ion-col sizeXs="3" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">Detalhes</ion-col>
+        <ion-col sizeXs="4" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col" id="details">Detalhes</ion-col>
       </ion-row>
-      <ion-row *ngFor="let products of product">
-        <ion-col sizeXs="2">{{ products.id }}</ion-col>
+      <ion-row *ngFor="let products of product | async">
         <ion-col sizeXs="7">{{ products.nome }}</ion-col>
         <ion-col class="hidden-xs-col">{{ products.quantidade}}</ion-col>
         <ion-col class="hidden-xs-col">{{ products.preco_venda }}</ion-col>
         <ion-col class="hidden-xs-col">{{ products.preco_compra }}</ion-col>
         <ion-col class="hidden-xs-col">{{ products.fornecedor }}</ion-col>
-        <ion-col sizeXs="3" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col"><ion-button class="btn-modal" fill="clear" (click)="openModal(products.id)"><ion-icon name="ellipsis-horizontal-sharp"></ion-icon></ion-button></ion-col>
+        <ion-col sizeXs="5" class="show-xs-col hidden-md-col hidden-xl-col hidden-lg-col">
+          <ion-button class="btn-modal" fill="clear" (click)="openModal(products.id)">
+            <ion-icon name="ellipsis-horizontal-sharp"></ion-icon>
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-grid>
     <div class="ion-modal-content"></div>

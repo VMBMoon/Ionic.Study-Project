@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  correiosWS: 'http://viacep.com.br/ws'
+  correiosWS: 'http://viacep.com.br/ws',
+  firebase : {
+    apiKey: "AIzaSyDlpd4QdoFhRRlKixI3myPmoNCCKfl0Z-8",
+    authDomain: "atividade-ionic-e1e3a.firebaseapp.com",
+    projectId: "atividade-ionic-e1e3a",
+    storageBucket: "atividade-ionic-e1e3a.appspot.com",
+    messagingSenderId: "438777704658",
+    appId: "1:438777704658:web:c17bb42e77d7e274d03d0b"
+},
+
+
 };
 
 /*

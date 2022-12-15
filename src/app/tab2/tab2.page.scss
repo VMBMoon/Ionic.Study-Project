@@ -32,12 +32,17 @@ ion-grid {
     border-bottom: 1px solid #6A64FF;
 
   }
+  ion-col#details{
+    text-align: center;
+
+  }
 
   .btn-modal {
     display: block;
     color: white;
     width: max-content;
     height: max-content;
+    margin: auto;
 
   }
   .btn-modal:hover {

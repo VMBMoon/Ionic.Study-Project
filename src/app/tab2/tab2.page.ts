@@ -1,8 +1,12 @@
+import { Firestore } from '@angular/fire/firestore';
 import { ProductService } from './../services/product.service';
 import { Product } from './../model/product';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalProductDetailsComponent } from '../modal-product-details/modal-product-details.component';
+import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,27 +16,29 @@ import { ModalProductDetailsComponent } from '../modal-product-details/modal-pro
 })
 export class Tab2Page {
 
-  product!: Product[];
+  product!: Observable<Product[]>;
 
   constructor(
     private productService: ProductService,
-    private modalCtrl: ModalController ) {}
+    private modalCtrl: ModalController,
+    private firestore: Firestore,
+    private firebaseService: FirebaseService, private router: Router) {
+      this.product = this.firebaseService.list();}
 
   public ionViewWillEnter(): void {
-    this.listProduct();
+    this.firebaseService.list();
   }
 
-  listProduct() {
+  /*listProduct() {
     this.productService.getProduct().subscribe({
       next: (result) => (this.product = result),
       error: (err) => console.error(err),
     });
-  }
+  }*/
 
-  async openModal(id:number) {
+  async openModal(id:string) {
 
-    const product = this.product.find(product => product.id === id);
-
+    const product = this.firebaseService.find(`${id}`);
 
     const modal = await this.modalCtrl.create({
       component: ModalProductDetailsComponent,
@@ -44,7 +50,7 @@ export class Tab2Page {
     modal.onWillDismiss().then(
       event => {
         if(event.role === 'cancel') {
-          this.listProduct();
+          this.firebaseService.list();
         }
       }
     );
@@ -53,3 +59,4 @@ export class Tab2Page {
   }
 
 }
+

@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { Tab3PageRoutingModule } from './tab3-routing.module';
-import { Tab3Page } from './tab3.page';
+import { ContactDetailsPageRoutingModule } from './contact-details-routing.module';
+import { ContactDetailsPage } from './contact-details.page';
 
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    Tab3PageRoutingModule
+    IonicModule,
+    ContactDetailsPageRoutingModule
   ],
-  declarations: [Tab3Page]
+  declarations: [ContactDetailsPage]
 })
-export class Tab3PageModule {}
+export class ContactDetailsPageModule {}

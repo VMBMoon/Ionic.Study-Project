@@ -1,4 +1,8 @@
+import { FirebaseService } from './../services/firebase.service';
+import { Observable } from 'rxjs';
+import { Contact } from './../model/contact.model';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +11,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  contacts!: Observable<Contact[]>;
+
+  constructor(private firebaseService: FirebaseService, private router: Router) {
+    this.contacts = this.firebaseService.list();
+  }
+
+  newContact() {
+    this.router.navigateByUrl('/tabs/register');
+  }
+
+  editContact(id:string) {
+    this.router.navigateByUrl(`/tabs/details/${id}`);
+  }
 
 }

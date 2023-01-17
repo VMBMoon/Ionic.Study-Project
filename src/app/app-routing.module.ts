@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'all-sales',
     loadChildren: () => import('./pages/all-sales/all-sales.module').then( m => m.AllSalesPageModule)
+  },
+  {
+    path: 'add-sale',
+    loadChildren: () => import('./pages/add-sale/add-sale.module').then( m => m.AddSalePageModule)
   }
 ];
 

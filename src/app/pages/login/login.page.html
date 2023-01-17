@@ -1,5 +1,6 @@
 <ion-content>
   <div class="flex-center">
+    <form [formGroup]="form">
   <ion-card color="dark">
     <ion-card-header color="secondary">
         <ion-card-title style="color:white;">Log in</ion-card-title>
@@ -8,16 +9,23 @@
     <ion-card-content>
       <ion-item color="dark">
         <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
+      <app-error-message [field]="$any(form).get('email')" error="required" message="Email is required" ></app-error-message>
+      <app-error-message [field]="$any(form).get('email')" error="email" message="Email is invalid" ></app-error-message>
+
       <ion-item color="dark">
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-<ion-button color="danger" fill="clear" size="full">Forgot email/password</ion-button>
-<ion-button color="primary" size="full">Login</ion-button>
-<ion-button color="tertiary" fill="clear" size="full">Register</ion-button>
+      <app-error-message [field]="$any(form).get('password')" error="required" message="Password is required" ></app-error-message>
+
+
+<ion-button color="danger" fill="clear" size="full" [disabled]="!form.get('email')?.valid">Forgot email/password</ion-button>
+<ion-button color="primary" size="full" [disabled]="!form.valid" (click)="login()">Login</ion-button>
+<ion-button color="tertiary" fill="clear" size="full" (click)="register()">Register</ion-button>
     </ion-card-content>
   </ion-card>
+</form>
 </div>
 </ion-content>

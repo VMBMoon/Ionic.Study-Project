@@ -20,14 +20,14 @@
     </ion-item>
   </ion-list>
 
-<app-shared-component [hasHeader]="true" [hasFooter]="false" product="RX-7" brand="Mazda" soldAt="02/01/2023" notes="Model 2001, Semi-New, 5.200km driven" price="120.000,00">
+<app-shared-component [hasHeader]="true" [hasFooter]="true" product="RX-7" brand="Mazda" soldAt="02/01/2023" notes="Model 2001, Semi-New, 5.200km driven" price="120.000,00">
   <ion-card-header color="dark">
     <ion-card-subtitle style="color:gray;">Last sell</ion-card-subtitle>
   </ion-card-header>
 </app-shared-component>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="primary">
+    <ion-fab-button color="primary" (click)="newSale()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

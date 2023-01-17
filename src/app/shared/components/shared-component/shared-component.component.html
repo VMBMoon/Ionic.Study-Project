@@ -21,6 +21,6 @@
       <ion-icon name="cash" slot="start" color="success"></ion-icon>
       <ion-label class="money" color="success">$ {{price}}</ion-label>
     </ion-item>
-    <ion-button *ngIf="hasFooter" color="primary" fill="clear" size="full">See details</ion-button>
+    <ion-button *ngIf="hasFooter" color="primary" fill="clear" size="full" (click)="goToSalesDetail()">See details</ion-button>
   </ion-card-content>
 </ion-card>

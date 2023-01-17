@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -18,8 +19,13 @@ export class SharedComponentComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  goToSalesDetail() {
+    this.router.navigate(['sales']);
+  }
+
 
 }

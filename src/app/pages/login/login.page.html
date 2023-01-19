@@ -21,7 +21,7 @@
       <app-error-message [field]="$any(form).get('password')" error="required" message="Password is required" ></app-error-message>
 
 
-<ion-button color="danger" fill="clear" size="full" [disabled]="!form.get('email')?.valid">Forgot email/password</ion-button>
+<ion-button color="danger" fill="clear" size="full" [disabled]="!form.get('email')?.valid" (click)="forgotEmailPassword()">Forgot email/password</ion-button>
 <ion-button color="primary" size="full" [disabled]="!form.valid" (click)="login()">Login</ion-button>
 <ion-button color="tertiary" fill="clear" size="full" (click)="register()">Register</ion-button>
     </ion-card-content>

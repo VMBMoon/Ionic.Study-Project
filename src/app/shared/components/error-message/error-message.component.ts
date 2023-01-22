@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-error-message',
@@ -12,7 +13,7 @@ export class ErrorMessageComponent implements OnInit {
   @Input() error!: string;
   @Input() field!: AbstractControl;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 

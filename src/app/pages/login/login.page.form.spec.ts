@@ -1,6 +1,6 @@
-import { FormGroup } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { LoginPageForm} from "./login.page.form";
+import { FormBuilder, FormGroup } from '@angular/forms';
+
+import { LoginPageForm } from './login.page.form';
 
 describe('LoginPageFrom', () =>
 {
@@ -40,7 +40,7 @@ describe('LoginPageFrom', () =>
   it('should have a valid form' , () =>
   {
     form.get('email')?.setValue('valid@email.com');
-    form.get('password')?.setValue("anyPassword");
+    form.get('password')?.setValue('anyPassword');
 
     expect(form.valid).toBeTruthy();
   })

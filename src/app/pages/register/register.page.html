@@ -5,22 +5,24 @@
 </ion-header>
 
 <ion-content>
+  <ion-form [formGroup]="createForm()">
   <ion-card color="dark">
     <ion-card-header>
       <ion-card-title color="secondary">Create a Login</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item color="dark">
-        <ion-label position="floating">Username</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+        <app-error-message [field]="$any(register).getForm().get('email')" error="required" message="Email must not be empty"></app-error-message>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">Confirm Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" formControlName="repeatPassword"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -32,15 +34,11 @@
     <ion-card-content>
       <ion-item color="dark">
         <ion-label position="floating">CPF</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="cpf"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">Name</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-      <ion-item color="dark">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -49,33 +47,35 @@
     <ion-card-header>
       <ion-card-title color="secondary">Address Information</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content formGroupName="Address">
       <ion-item color="dark">
         <ion-label position="floating">Postal-Code</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="postalCode"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">City</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="city"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">State</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="state"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">District</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="dist"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">Street</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="street"></ion-input>
       </ion-item>
       <ion-item color="dark">
         <ion-label position="floating">Number</ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-input type="number" formControlName="number"></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
   <ion-button size="full" color="tertiary" (click)="register()">Register</ion-button>
+</ion-form>
 
 </ion-content>
+

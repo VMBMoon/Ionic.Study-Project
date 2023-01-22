@@ -1,3 +1,5 @@
+import { RegisterPageModule } from './register.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './../../app-routing.module';
 import { Router } from '@angular/router';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
@@ -13,7 +15,7 @@ describe('RegisterPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RegisterPage ],
-      imports: [IonicModule.forRoot(), AppRoutingModule]
+      imports: [IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, RegisterPageModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(RegisterPage);

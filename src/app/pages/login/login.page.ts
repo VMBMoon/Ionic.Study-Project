@@ -1,16 +1,16 @@
-import { AuthService } from './../../services/auth/auth.service';
-import { ToastController } from '@ionic/angular';
-import { LoginState } from './../../../store/login/LoginState';
-import { recoverPassword, recoverPasswordSuccess, recoverPasswordFail, login, loginSuccess, loginFail } from './../../../store/login/LoginActions';
-import { hide, show } from './../../../store/loading/loading.actions';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { AppState } from 'src/store/AppState';
 
+import { hide, show } from './../../../store/loading/loading.actions';
+import { login, recoverPassword } from './../../../store/login/LoginActions';
+import { LoginState } from './../../../store/login/LoginState';
 import { LoginPageForm } from './login.page.form';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-login',
@@ -28,16 +28,17 @@ export class LoginPage implements OnInit, OnDestroy {
     private formBuilder:FormBuilder,
     private store: Store<AppState>,
     private toastController: ToastController,
-    private authService: AuthService) { }
+    //private authService: AuthService
+    ) { }
 
   ngOnInit() {
     this.form = new LoginPageForm(this.formBuilder).createForm();
 
     this.store.select('login').subscribe(loginState => {
       this.onIsRecoveredPassword(loginState);
-      this.onIsRecoveringPassword(loginState);
+      //this.onIsRecoveringPassword(loginState);
 
-      this.onIsLogginIn(loginState);
+      //this.onIsLogginIn(loginState);
       this.onIsLoggedIn(loginState);
 
       this.onError(loginState);
@@ -67,7 +68,7 @@ export class LoginPage implements OnInit, OnDestroy {
     }
   }
 
-  private onIsLogginIn(loginState: LoginState){
+  /*private onIsLogginIn(loginState: LoginState){
     if (loginState.isLogginIn){
       const email = this.form.get('email')?.value;
       const password = this.form.get('password')?.value;
@@ -77,7 +78,7 @@ export class LoginPage implements OnInit, OnDestroy {
         this.store.dispatch(loginFail({error}));
       })
     }
-  }
+  }*/
 
   private async onError(loginState: LoginState){
     if (loginState.error){
@@ -91,7 +92,7 @@ export class LoginPage implements OnInit, OnDestroy {
     }
   }
 
-  private onIsRecoveringPassword(loginState: LoginState){
+ /* private onIsRecoveringPassword(loginState: LoginState){
     if (loginState.isRecoveringPassword){
 
 
@@ -102,7 +103,7 @@ export class LoginPage implements OnInit, OnDestroy {
       });
     }
 
-  }
+  }*/
 
   private async onIsRecoveredPassword(loginState: LoginState){
     if (loginState.isRecoveredPassword){
@@ -119,14 +120,14 @@ export class LoginPage implements OnInit, OnDestroy {
 
 
   forgotEmailPassword(){
-    this.store.dispatch(recoverPassword());
+    this.store.dispatch(recoverPassword({email: this.form.get('email')?.value}));
   }
 
   login(){
-    this.store.dispatch(login());
+    this.store.dispatch(login({email: this.form.get('email')?. value, password: this.form.get('password')?.value}));
   }
 
   register(){
-    this.router.navigate(['register']);
+    this.router.navigateByUrl("register");
   }
 }

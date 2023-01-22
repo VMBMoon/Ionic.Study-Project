@@ -1,21 +1,20 @@
-
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { SharedComponentComponent } from './components/shared-component/shared-component.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
 
 @NgModule({
-  declarations: [SharedComponentComponent],
+  declarations: [ErrorMessageComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule
   ],
-  exports:[
-    SharedComponentComponent
+  exports: [
+    ErrorMessageComponent
   ]
 })
-export class SharedModule { }
+export class ErrorMessageModule { }

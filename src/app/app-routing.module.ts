@@ -1,5 +1,6 @@
+import { AuthGuard } from './guards/auth/auth-guard';
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes, CanLoad } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -22,19 +23,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canMatch: [AuthGuard]
   },
   {
     path: 'sales',
-    loadChildren: () => import('./pages/sales/sales.module').then( m => m.SalesPageModule)
+    loadChildren: () => import('./pages/sales/sales.module').then( m => m.SalesPageModule),
+    canMatch: [AuthGuard]
   },
   {
     path: 'all-sales',
-    loadChildren: () => import('./pages/all-sales/all-sales.module').then( m => m.AllSalesPageModule)
+    loadChildren: () => import('./pages/all-sales/all-sales.module').then( m => m.AllSalesPageModule),
+    canMatch: [AuthGuard]
   },
   {
     path: 'add-sale',
-    loadChildren: () => import('./pages/add-sale/add-sale.module').then( m => m.AddSalePageModule)
+    loadChildren: () => import('./pages/add-sale/add-sale.module').then( m => m.AddSalePageModule),
+    canMatch: [AuthGuard]
   }
 ];
 

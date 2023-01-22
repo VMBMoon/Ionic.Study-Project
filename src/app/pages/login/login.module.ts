@@ -1,4 +1,4 @@
-import { ErrorMessageComponent } from './../../components/error-message/error-message.component';
+import { ErrorMessageModule } from './../../shared/error-message.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,8 +16,10 @@ import { LoginPage } from './login.page';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
+    ErrorMessageModule
   ],
-  declarations: [LoginPage, ErrorMessageComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}

@@ -24,7 +24,7 @@ export class AuthGuard implements CanMatch {
         if (loginState.isLoggedIn){
           return of(true);
         }
-        this.router.navigateByUrl('./login');
+        this.router.navigateByUrl('/login');
         return of(false);
       })
     )

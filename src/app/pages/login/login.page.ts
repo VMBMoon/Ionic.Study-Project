@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/store/AppState';
@@ -28,6 +28,7 @@ export class LoginPage implements OnInit, OnDestroy {
     private formBuilder:FormBuilder,
     private store: Store<AppState>,
     private toastController: ToastController,
+    private navController: NavController
     //private authService: AuthService
     ) { }
 
@@ -64,7 +65,7 @@ export class LoginPage implements OnInit, OnDestroy {
 
   private onIsLoggedIn(loginState: LoginState){
     if (loginState.isLoggedIn){
-      this.router.navigate(['home']);
+      this.navController.navigateRoot('home');
     }
   }
 
@@ -86,7 +87,8 @@ export class LoginPage implements OnInit, OnDestroy {
       const toaster = await this.toastController.create({
         position: "bottom",
         message: loginState.error.message,
-        color: "danger"
+        color: "danger",
+        duration: 5000,
       });
       toaster.present();
     }
@@ -111,7 +113,8 @@ export class LoginPage implements OnInit, OnDestroy {
       const toaster = await this.toastController.create({
         position: "bottom",
         message: "Recovery email sent",
-        color: "primary"
+        color: "primary",
+        duration: 5000,
       });
       toaster.present();
     }
@@ -128,6 +131,6 @@ export class LoginPage implements OnInit, OnDestroy {
   }
 
   register(){
-    this.router.navigateByUrl("register");
+    this.router.navigateByUrl("/register");
   }
 }
